@@ -73,15 +73,15 @@ function updateTimerValues({ days, hours, minutes, seconds }) {
 }
 
 refs.startBtn.addEventListener('click', () => {
-    let timeToEnd = Math.ceil((targetTime - Date.now()) / 1000) * 1000
+    let pastTime = Math.ceil((valueTime - Date.now()) / 1000) * 1000
 
     const timerId = setInterval(() => {
-        updateTimerValues(convertMs(timeToEnd));
-        timeToEnd -= 1000;
+        updateTimerValues(convertMs(pastTime));
+        pastTime -= 1000;
 
     }, 1000)
 
     setTimeout(() => {
         clearInterval(timerId)
-    }, timeToEnd + 1000)
+    }, pastTime + 1000)
 })
